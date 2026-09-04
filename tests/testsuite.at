@@ -18,3 +18,8 @@ OPTIONS:
 Report bugs to: <AT_PACKAGE_BUGREPORT>
 ])
 AT_CLEANUP
+
+AT_SETUP([procinfo --bogus])
+AT_CHECK([procinfo --bogus], 1, [Try 'AT_PACKAGE_NAME --help' for more information.
+], [ignore])
+AT_CLEANUP
