@@ -5,3 +5,16 @@ AT_SETUP([procinfo --version])
 AT_CHECK([procinfo --version], , [AT_PACKAGE_STRING
 ])
 AT_CLEANUP
+
+AT_SETUP([procinfo --help])
+AT_CHECK([procinfo --help], , [AT_PACKAGE_STRING
+
+Usage: AT_PACKAGE_NAME [[OPTIONS]]
+
+OPTIONS:
+  -v,--version    print version number and exit
+  -h,--help       print this help message and exit
+
+Report bugs to: <AT_PACKAGE_BUGREPORT>
+])
+AT_CLEANUP

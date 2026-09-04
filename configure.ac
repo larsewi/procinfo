@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.72])
-AC_INIT([procinfo], [0.1.0], [https://github.com/larsewi/procinfo])
+AC_INIT([procinfo], [0.1.0], [https://github.com/larsewi/procinfo/issues], [procinfo], [https://github.com/larsewi/procinfo])
 AC_CONFIG_SRCDIR([lib/procinfo.c])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIRS([m4])
