@@ -1,25 +1,5 @@
 AT_INIT
 AT_COLOR_TESTS
 
-AT_SETUP([procinfo --version])
-AT_CHECK([procinfo --version], , [AT_PACKAGE_STRING
-])
-AT_CLEANUP
-
-AT_SETUP([procinfo --help])
-AT_CHECK([procinfo --help], , [AT_PACKAGE_STRING
-
-Usage: AT_PACKAGE_NAME [[OPTIONS]]
-
-OPTIONS:
-  -v,--version    print version number and exit
-  -h,--help       print this help message and exit
-
-Report bugs to: <AT_PACKAGE_BUGREPORT>
-])
-AT_CLEANUP
-
-AT_SETUP([procinfo --bogus])
-AT_CHECK([procinfo --bogus], 1, [Try 'AT_PACKAGE_NAME --help' for more information.
-], [ignore])
-AT_CLEANUP
+m4_include([unit_tests.at])
+m4_include([acceptance_tests.at])

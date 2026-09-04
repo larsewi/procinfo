@@ -7,6 +7,8 @@ AC_CONFIG_SRCDIR([lib/procinfo.c])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIRS([m4])
 
+AC_DEFINE([BUFFER_SIZE], 1024, [Initial buffer size allocated])
+
 AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects])
 
 # Checks for programs.
@@ -28,10 +30,11 @@ LT_INIT
 # Checks for header files.
 
 # Checks for typedefs, structures, and compiler characteristics.
+AC_TYPE_SIZE_T
 
 # Checks for library functions.
 
-AC_CONFIG_TESTDIR([tests], [cli])
+AC_CONFIG_TESTDIR([tests], [cli:tests])
 AC_CONFIG_FILES([Makefile
                  cli/Makefile
                  lib/Makefile

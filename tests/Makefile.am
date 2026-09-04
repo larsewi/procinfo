@@ -1,7 +1,9 @@
-EXTRA_DIST = testsuite.at $(TESTSUITE) atconfig package.m4
+EXTRA_DIST = $(TESTSOURCES) $(TESTSUITE) atconfig package.m4
 
 TESTSUITE = $(srcdir)/testsuite
-TESTSOURCES = $(srcdir)/testsuite.at
+TESTSOURCES = $(srcdir)/testsuite.at \
+    $(srcdir)/unit_tests.at \
+    $(srcdir)/acceptance_tests.at
 AUTOM4TE = $(SHELL) $(top_srcdir)/missing --run autom4te
 AUTOTEST = $(AUTOM4TE) --language=autotest
 
@@ -31,3 +33,8 @@ $(srcdir)/package.m4: $(top_srcdir)/configure.ac
 
 $(TESTSUITE): $(TESTSOURCES) $(srcdir)/package.m4
 	$(AM_V_GEN) $(AUTOTEST) -I '$(srcdir)' -o $@.tmp $@.at; mv $@.tmp $@
+
+AM_CPPFLAGS = -I$(top_srcdir)/include -I$(top_srcdir)/lib
+LDADD = $(top_builddir)/lib/libprocinfo.la
+
+check_PROGRAMS = test_buffer

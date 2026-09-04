@@ -1,0 +1,5 @@
+AT_BANNER([Unit tests])
+
+AT_SETUP([buffer])
+AT_CHECK([test_buffer])
+AT_CLEANUP

@@ -5,4 +5,6 @@ lib_LTLIBRARIES = libprocinfo.la
 
 include_HEADERS = $(top_srcdir)/include/procinfo.h
 
-libprocinfo_la_SOURCES = procinfo.c
+libprocinfo_la_SOURCES = procinfo.c \
+    buffer.c buffer.h \
+    utils.c utils.h

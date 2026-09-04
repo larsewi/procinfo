@@ -119,6 +119,12 @@ dkms.conf
 /tests/testsuite
 /tests/testsuite.log
 
+# compiled check programs, but keep their sources
+/tests/test_*
+!/tests/test_*.c
+!/tests/test_*.h
+!/tests/test_*.at
+
 # built binaries
 /cli/procinfo
 
