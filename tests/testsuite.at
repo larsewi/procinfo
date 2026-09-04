@@ -1,0 +1,7 @@
+AT_INIT
+AT_COLOR_TESTS
+
+AT_SETUP([procinfo --version])
+AT_CHECK([procinfo --version], , [AT_PACKAGE_STRING
+])
+AT_CLEANUP
