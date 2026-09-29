@@ -36,6 +36,19 @@ static buffer_t *buffer_init(size_t capacity) {
     return buffer;
 }
 
+static void buffer_ensure_capacity(buffer_t *const self, const size_t needed) {
+    assert(self != NULL);
+
+    while ((self->capacity - self->length) <= needed) {
+        self->capacity = self->capacity * 2;
+        self->buffer = (char *)realloc(self->buffer, self->capacity);
+        if (self->buffer == NULL) {
+            perror("Failed to allocate memory");
+            abort();
+        }
+    }
+}
+
 size_t buffer_length(const buffer_t *const self) {
     assert(self != NULL);
     return self->length;
@@ -75,6 +88,20 @@ const char *buffer_data(const buffer_t *const buffer) {
     assert(buffer->buffer != NULL);
 
     return buffer->buffer;
+}
+
+buffer_t *buffer_concat(buffer_t *const self, const buffer_t *const other) {
+    assert(self != NULL);
+    assert(other != NULL);
+
+    buffer_ensure_capacity(self, other->length);
+    for (size_t i = 0; i < other->length; i++) {
+        self->buffer[self->length + i] = other->buffer[i];
+    }
+    self->length += other->length;
+    self->buffer[self->length] = '\0';
+
+    return self;
 }
 
 void buffer_destroy(void *const ptr) {

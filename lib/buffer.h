@@ -12,6 +12,8 @@ buffer_t *buffer_create(const char *format, ...);
 
 const char *buffer_data(const buffer_t *self);
 
+buffer_t *buffer_concat(buffer_t *self, const buffer_t *other);
+
 void buffer_destroy(void *ptr);
 
 #endif /* __PROCINFO_BUFFER_H__ */

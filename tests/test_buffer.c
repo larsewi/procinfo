@@ -14,8 +14,21 @@ int main(void) {
     const char *data = buffer_data(buf);
     assert(strcmp(data, "foobar") == 0);
 
+    {
+        buffer_t *tmp1 = buffer_create("baz");
+        assert(tmp1 != NULL);
+
+        const buffer_t *tmp2 = buffer_concat(buf, tmp1);
+        assert(buf == tmp2);
+
+        buffer_destroy(tmp1);
+    }
+
+    data = buffer_data(buf);
+    assert(strcmp(data, "foobarbaz") == 0);
+
     size_t length = buffer_length(buf);
-    assert(length == 6);
+    assert(length == 9);
 
     buffer_destroy(buf);
 
