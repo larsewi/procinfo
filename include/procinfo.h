@@ -3,6 +3,8 @@
 
 #include <sys/types.h>
 
+typedef struct procinfo procinfo_t;
+
 const char *procinfo_version(void);
 
 #endif /* __PROCINFO_H__ */
